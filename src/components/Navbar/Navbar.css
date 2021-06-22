@@ -1,0 +1,51 @@
+.navbar-nav li a {
+    color: white;
+    position: relative;
+}
+
+.navbar-nav li a::before {
+    content: "";
+    width: 0px;
+    height: 2px;
+    background: rgb(100, 38, 38);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transition: .5s;
+}
+
+@media only screen and (max-width: 500px) {
+    .navbar-nav li a:hover::before {
+        width: 40%;
+    }
+    .navbar-brand b {
+        font-size: 15px;
+    }
+    .navbar-toggler-icon {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (min-width: 500px) {
+    .navbar-nav li a:hover::before {
+        width: 35%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .navbar-nav li a:hover::before {
+        width: 15%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .navbar-nav li a:hover::before {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .navbar-nav li a:hover::before {
+        width: 100%;
+    }
+}

@@ -1,0 +1,35 @@
+@media screen and (max-width: 600px){
+    .login-style{
+        width: 80%;
+        border: 1px solid black;
+        padding: 20px;
+        margin: auto
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .login-style{
+        width: 80%;
+        border: 1px solid black;
+        padding: 20px;
+        margin: auto
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .login-style{
+        width: 60%;
+        border: 1px solid black;
+        padding: 20px;
+        margin: auto
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .login-style{
+        width: 40%;
+        border: 1px solid black;
+        padding: 20px;
+        margin: auto
+    }
+}
