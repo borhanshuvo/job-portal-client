@@ -8,7 +8,7 @@ const ManageService = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/serviceList')
+        fetch('https://salty-oasis-92410.herokuapp.com/serviceList')
             .then(res => res.json())
             .then(data => setServices(data))
     }, []);
@@ -16,7 +16,7 @@ const ManageService = () => {
     const deleteService = (id) => {
         const loading = toast.loading('Please wait...!');
 
-        fetch(`http://localhost:5000/delete/${id}`, {
+        fetch(`https://salty-oasis-92410.herokuapp.com/delete/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

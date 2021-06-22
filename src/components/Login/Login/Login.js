@@ -65,20 +65,20 @@ const Login = () => {
             });
     }
 
-    fetch('http://localhost:5000/adminList')
+    fetch('https://salty-oasis-92410.herokuapp.com/adminList')
         .then(res => res.json())
         .then(data => {
             setAdmins(data);
         });
 
 
-    fetch('http://localhost:5000/employeeList')
+    fetch('https://salty-oasis-92410.herokuapp.com/employeeList')
         .then(res => res.json())
         .then(data => {
             setEmployees(data);
         });
 
-    fetch('http://localhost:5000/jobSeekerList')
+    fetch('https://salty-oasis-92410.herokuapp.com/jobSeekerList')
         .then(res => res.json())
         .then(data => {
             setJobSeekers(data);
@@ -137,7 +137,7 @@ const Login = () => {
 
         if (data.user_type === 'employee') {
 
-            fetch('http://localhost:5000/addEmployee', {
+            fetch('https://salty-oasis-92410.herokuapp.com/addEmployee', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -157,7 +157,7 @@ const Login = () => {
 
         else if (data.user_type === 'job_seeker') {
 
-            fetch('http://localhost:5000/addJobSeeker', {
+            fetch('https://salty-oasis-92410.herokuapp.com/addJobSeeker', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
