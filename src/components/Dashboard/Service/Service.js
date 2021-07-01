@@ -7,7 +7,7 @@ const Service = () => {
     const history = useHistory();
 
     useEffect(() => {
-        fetch('https://salty-oasis-92410.herokuapp.com/serviceList')
+        fetch('http://localhost:5000/serviceList')
             .then(res => res.json())
             .then(data => {
                 setServices(data);
@@ -39,7 +39,6 @@ const Service = () => {
                         </div>
                     )
                 }
-
             </div>
         </div>
     );

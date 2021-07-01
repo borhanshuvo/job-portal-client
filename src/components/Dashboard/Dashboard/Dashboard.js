@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
+
 import MakeAdmin from '../Admin/MakeAdmin/MakeAdmin';
 import Sidebar from '../Sidebar/Sidebar';
 import AddService from '../Admin/AddService/AddService';
@@ -22,38 +23,23 @@ const Dashboard = () => {
     const [isBookedUser, setIsBookedUser] = useState('none');
 
     useEffect(() => {
-        fetch('https://salty-oasis-92410.herokuapp.com/isAdmin', {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ email: loggedInUser.email })
-        })
+        fetch('http://localhost:5000/isUser?email=' + loggedInUser.email)
             .then(res => res.json())
-            .then(data => setIsAdmin(data))
+            .then(data => {
+                if (data[0].user_type === 'admin') {
+                    setIsAdmin(true);
+                }
+                if (data[0].user_type === 'employee') {
+                    setIsEmployee(true);
+                }
+                if (data[0].user_type === 'job_seeker') {
+                    setIsJobSeeker(true);
+                }
+            })
     }, [loggedInUser.email]);
 
     useEffect(() => {
-
-        fetch('https://salty-oasis-92410.herokuapp.com/isEmployee', {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ email: loggedInUser.email })
-        })
-            .then(res => res.json())
-            .then(data => setIsEmployee(data))
-    }, [loggedInUser.email]);
-
-    useEffect(() => {
-        fetch('https://salty-oasis-92410.herokuapp.com/isJobSeeker', {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ email: loggedInUser.email })
-        })
-            .then(res => res.json())
-            .then(data => setIsJobSeeker(data))
-    }, [loggedInUser.email]);
-
-    useEffect(() => {
-        fetch('https://salty-oasis-92410.herokuapp.com/isBookedUser?email=' + loggedInUser.email)
+        fetch('http://localhost:5000/isBookedUser?email=' + loggedInUser.email)
             .then(res => res.json())
             .then(data => {
                 if (data) {
@@ -102,9 +88,11 @@ const Dashboard = () => {
                                     <Service />
                                 </div>
 
-                                <Route path="/dashboard/book/:id">
-                                    <Booking />
-                                </Route>
+                                <div  style={{ display: isBookedUser }}>
+                                    <Route path="/dashboard/book/:id">
+                                        <Booking />
+                                    </Route>
+                                </div>
 
                                 <Route path="/dashboard/addJobPost">
                                     <AddJobPost />

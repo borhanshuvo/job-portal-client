@@ -10,7 +10,7 @@ const ApplyJob = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     useEffect(() => {
-        fetch(`https://salty-oasis-92410.herokuapp.com/jobApply/${id}`)
+        fetch(`http://localhost:5000/jobApply/${id}`)
             .then(res => res.json())
             .then(data => setJob(data))
     }, [id]);
@@ -22,7 +22,7 @@ const ApplyJob = () => {
         data.companyEmail = job.companyEmail;
         data.employeeEmail = job.email;
 
-        fetch('https://salty-oasis-92410.herokuapp.com/addApplyJobPost', {
+        fetch('http://localhost:5000/addApplyJobPost', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

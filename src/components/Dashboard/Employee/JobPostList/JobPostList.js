@@ -8,7 +8,7 @@ const JobPostList = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     useEffect(() => {
-        fetch('https://salty-oasis-92410.herokuapp.com/jobPostList?email='+loggedInUser.email)
+        fetch('http://localhost:5000/jobPostList?email='+loggedInUser.email)
             .then(res => res.json())
             .then(data => setPosts(data))
     }, [loggedInUser.email]);
@@ -38,7 +38,7 @@ const JobPostList = () => {
                     }
                     {posts.length === 0 &&
                         <div>
-                            <h6 className="pt-5 text-center">You haven't booked any services yet.</h6>
+                            <h6 className="pt-5 text-center">You did't add any post yet.</h6>
                         </div>
                     }
                 </div>

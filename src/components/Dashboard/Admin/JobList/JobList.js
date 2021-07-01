@@ -9,7 +9,7 @@ const JobList = () => {
     const [newStatus, setNewStatus] = useState(null);
 
     useEffect(() => {
-        fetch('https://salty-oasis-92410.herokuapp.com/allJobPostList')
+        fetch('http://localhost:5000/allJobPostList')
             .then(res => res.json())
             .then(data => {
                 setJobPosts(data);
@@ -17,7 +17,7 @@ const JobList = () => {
     }, []);
 
     const handelLoadBooking = (id) => {
-        fetch(`https://salty-oasis-92410.herokuapp.com/jobPostDataById/${id}`)
+        fetch(`http://localhost:5000/jobPostDataById/${id}`)
             .then(res => res.json())
             .then(data => {
                 setLoadData(data);
@@ -34,7 +34,7 @@ const JobList = () => {
         const status = newStatus;
         const bookingStatus = { status };
 
-        fetch(`https://salty-oasis-92410.herokuapp.com/update/${id}`, {
+        fetch(`http://localhost:5000/update/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(bookingStatus)

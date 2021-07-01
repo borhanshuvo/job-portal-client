@@ -6,7 +6,7 @@ const JobCandidate = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     useEffect(() => {
-        fetch('https://salty-oasis-92410.herokuapp.com/jobCandidate?email=' + loggedInUser.email)
+        fetch('http://localhost:5000/jobCandidate?email=' + loggedInUser.email)
             .then(res => res.json())
             .then(data => setCandidates(data))
     }, [loggedInUser.email]);
@@ -35,6 +35,11 @@ const JobCandidate = () => {
                                         <td>{candidate.phone}</td>
                                     </tr>
                                 ))
+                            }
+                            {candidates.length === 0 &&
+                                <tr>
+                                    <td colSpan='3'>Job Candidate List Empty</td>
+                                </tr>
                             }
                         </tbody>
                     </table>

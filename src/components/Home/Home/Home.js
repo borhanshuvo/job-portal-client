@@ -15,7 +15,7 @@ const Home = () => {
     const history = useHistory();
 
     useEffect(() => {
-        fetch('https://salty-oasis-92410.herokuapp.com/jobPostLists?status' + active)
+        fetch('http://localhost:5000/jobPostLists?status' + active)
             .then(res => res.json())
             .then(data => {
                 setAllJobPost(data);
@@ -40,7 +40,7 @@ const Home = () => {
                     <div className="row">
                         {
                             currentPosts.map(post =>
-                                <div className="col-md-12 pb-5">
+                                <div className="col-md-12 pb-5" key = {post._id}>
                                     <div className="card">
                                         <div className="card-body text-center">
                                             <h4 className="card-title">{post.companyName}</h4>

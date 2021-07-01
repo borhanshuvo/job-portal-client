@@ -12,38 +12,23 @@ const Sidebar = () => {
     const [isBookedUser, setIsBookedUser] = useState('block');
 
     useEffect(() => {
-        fetch('https://salty-oasis-92410.herokuapp.com/isAdmin', {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ email: loggedInUser.email })
-        })
+        fetch('http://localhost:5000/isUser?email=' + loggedInUser.email)
             .then(res => res.json())
-            .then(data => setIsAdmin(data))
+            .then(data => {
+                if (data[0].user_type === 'employee') {
+                    setIsEmployee(true);
+                }
+                if (data[0].user_type === 'job_seeker') {
+                    setIsJobSeeker(true);
+                }
+                if (data[0].user_type === 'admin') {
+                    setIsAdmin(true);
+                }
+            })
     }, [loggedInUser.email]);
 
     useEffect(() => {
-
-        fetch('https://salty-oasis-92410.herokuapp.com/isEmployee', {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ email: loggedInUser.email })
-        })
-            .then(res => res.json())
-            .then(data => setIsEmployee(data))
-    }, [loggedInUser.email]);
-
-    useEffect(() => {
-        fetch('https://salty-oasis-92410.herokuapp.com/isJobSeeker', {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ email: loggedInUser.email })
-        })
-            .then(res => res.json())
-            .then(data => setIsJobSeeker(data))
-    }, [loggedInUser.email]);
-
-    useEffect(() => {
-        fetch('https://salty-oasis-92410.herokuapp.com/isBookedUser?email=' + loggedInUser.email)
+        fetch('http://localhost:5000/isBookedUser?email=' + loggedInUser.email)
             .then(res => res.json())
             .then(data => {
                 if (data) {

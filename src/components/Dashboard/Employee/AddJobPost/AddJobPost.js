@@ -14,7 +14,7 @@ const AddJobPost = () => {
         data.status = 'in-active'
         const loading = toast.loading('Please wait...!');
 
-        fetch('https://salty-oasis-92410.herokuapp.com/addJobPost', {
+        fetch('http://localhost:5000/addJobPost', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

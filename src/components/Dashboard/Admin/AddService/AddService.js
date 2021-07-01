@@ -9,7 +9,7 @@ const AddService = () => {
     const onSubmit = (data, e) => {
         const loading = toast.loading('Please wait...!');
 
-        fetch('https://salty-oasis-92410.herokuapp.com/addService', {
+        fetch('http://localhost:5000/addService', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
