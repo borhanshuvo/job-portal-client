@@ -13,7 +13,7 @@ const Booking = () => {
     const [show, setShow] = useState('block');
 
     useEffect(() => {
-        fetch(`http://localhost:5000/service/${id}`)
+        fetch(`https://job-portal-015.herokuapp.com/service/${id}`)
             .then(res => res.json())
             .then(data => setService(data))
     }, [id]);
@@ -36,7 +36,7 @@ const Booking = () => {
             orderTime: new Date()
         };
 
-        fetch('http://localhost:5000/addBooking', {
+        fetch('https://job-portal-015.herokuapp.com/addBooking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -57,7 +57,7 @@ const Booking = () => {
         <div className="ps-4 pb-5">
             <div style={{ display: show }}>
                 <div style={{ display: bookingData ? 'none' : 'block' }}>
-                    <h4 className="pt-3 pb-5" style={headingColor}>Booking</h4>
+                    <h4 className="pb-2" style={headingColor}>Booking</h4>
                     <div className="card" style={{ width: '95%' }}>
                         <div className="card-body">
                             <form onSubmit={handleSubmit(onSubmit)}>

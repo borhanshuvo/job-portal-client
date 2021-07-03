@@ -9,7 +9,7 @@ const AddService = () => {
     const onSubmit = (data, e) => {
         const loading = toast.loading('Please wait...!');
 
-        fetch('http://localhost:5000/addService', {
+        fetch('https://job-portal-015.herokuapp.com/addService', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

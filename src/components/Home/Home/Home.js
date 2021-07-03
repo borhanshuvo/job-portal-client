@@ -15,7 +15,7 @@ const Home = () => {
     const history = useHistory();
 
     useEffect(() => {
-        fetch('http://localhost:5000/jobPostLists?status' + active)
+        fetch('https://job-portal-015.herokuapp.com/jobPostLists?status' + active)
             .then(res => res.json())
             .then(data => {
                 setAllJobPost(data);

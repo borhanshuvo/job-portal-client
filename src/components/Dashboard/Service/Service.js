@@ -7,7 +7,7 @@ const Service = () => {
     const history = useHistory();
 
     useEffect(() => {
-        fetch('http://localhost:5000/serviceList')
+        fetch('https://job-portal-015.herokuapp.com/serviceList')
             .then(res => res.json())
             .then(data => {
                 setServices(data);
@@ -23,7 +23,7 @@ const Service = () => {
 
     return (
         <div className="container pt-5 pb-5">
-            <div className="row pt-5 pb-5">
+            <div className="row pt-5">
                 <h6 className="text-center pb-3" style={headingColor}>Select Any One Package</h6>
                 {
                     services.map(service =>
