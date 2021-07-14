@@ -6,7 +6,7 @@ const JobCandidate = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     useEffect(() => {
-        fetch('https://job-portal-015.herokuapp.com/jobCandidate?email=' + loggedInUser.email)
+        fetch('http://localhost:5000/jobCandidate?email=' + loggedInUser.email)
             .then(res => res.json())
             .then(data => setCandidates(data))
     }, [loggedInUser.email]);

@@ -11,7 +11,7 @@ const MakeAdmin = () => {
         data.created = new Date();
         data.user_type = 'admin';
 
-        fetch('https://job-portal-015.herokuapp.com/addAdmin', {
+        fetch('http://localhost:5000/addAdmin', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

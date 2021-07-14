@@ -7,7 +7,7 @@ const Service = () => {
     const history = useHistory();
 
     useEffect(() => {
-        fetch('https://job-portal-015.herokuapp.com/serviceList')
+        fetch('http://localhost:5000/serviceList')
             .then(res => res.json())
             .then(data => {
                 setServices(data);

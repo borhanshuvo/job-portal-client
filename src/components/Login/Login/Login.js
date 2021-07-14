@@ -19,7 +19,7 @@ const Login = () => {
     const location = useLocation();
     let { from } = location.state || { from: { pathname: '/' } };
 
-    fetch('https://job-portal-015.herokuapp.com/usersList')
+    fetch('http://localhost:5000/usersList')
         .then(res => res.json())
         .then(data => setUsers(data));
 
@@ -47,7 +47,7 @@ const Login = () => {
 
         data.created = new Date();
 
-        fetch('https://job-portal-015.herokuapp.com/addUser', {
+        fetch('http://localhost:5000/addUser', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
