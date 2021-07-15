@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../App';
+
+
 import './Navbar.css';
 
 const Navbar = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     return (
         <header className="pb-5">
             <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
@@ -19,9 +23,16 @@ const Navbar = () => {
                             <li class="nav-item">
                                 <Link className="nav-link text-uppercase fs-5" to="/dashboard">Dashboard</Link>
                             </li>
-                            <li class="nav-item">
-                                <Link className="nav-link text-uppercase fs-5" to="/login">Login</Link>
-                            </li>
+                            {!loggedInUser.email &&
+                                <li class="nav-item">
+                                    <Link className="nav-link text-uppercase fs-5" to="/login">Login</Link>
+                                </li>
+                            }
+                            {loggedInUser.email &&
+                                <li class="nav-item">
+                                    <button style={{ border: 'none' }} className="nav-link text-uppercase fs-5 bg-light" onClick={() => setLoggedInUser({})}>Logout</button>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div>

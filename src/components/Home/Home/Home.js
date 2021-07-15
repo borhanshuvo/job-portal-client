@@ -6,7 +6,6 @@ import Pagination from '../Pagination/Pagination';
 import './Home.css';
 
 const Home = () => {
-    document.title = 'JP | Job List';
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [allJobPost, setAllJobPost] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -65,9 +64,11 @@ const Home = () => {
                                             <p className="card-text">Job Description : {post.description}</p>
                                             <p className="card-text">Vacancy : {post.vacancy}</p>
                                         </div>
-                                        <div className="card-footer text-center">
-                                            <button className="btn btn-primary" onClick={() => applyId(post._id)}>Apply Now</button>
-                                        </div>
+                                        {loggedInUser.user_type === 'job_seeker' &&
+                                            <div className="card-footer text-center">
+                                                <button className="btn btn-primary" onClick={() => applyId(post._id)}>Apply Now</button>
+                                            </div>
+                                        }
                                     </div>
                                 </div>
                             )
