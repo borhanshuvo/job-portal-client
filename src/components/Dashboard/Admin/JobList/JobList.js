@@ -9,7 +9,7 @@ const JobList = () => {
     const [newStatus, setNewStatus] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:5000/allJobPostList')
+        fetch('https://job-portal-015.herokuapp.com/allJobPostList')
             .then(res => res.json())
             .then(data => {
                 setJobPosts(data);
@@ -17,7 +17,7 @@ const JobList = () => {
     }, []);
 
     const handelLoadBooking = (id) => {
-        fetch(`http://localhost:5000/jobPostDataById/${id}`)
+        fetch(`https://job-portal-015.herokuapp.com/jobPostDataById/${id}`)
             .then(res => res.json())
             .then(data => {
                 setLoadData(data);
@@ -34,7 +34,7 @@ const JobList = () => {
         const status = newStatus;
         const bookingStatus = { status };
 
-        fetch(`http://localhost:5000/update/${id}`, {
+        fetch(`https://job-portal-015.herokuapp.com/update/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(bookingStatus)

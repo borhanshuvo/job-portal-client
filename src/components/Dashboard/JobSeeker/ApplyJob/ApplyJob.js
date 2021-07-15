@@ -10,7 +10,7 @@ const ApplyJob = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/jobApply/${id}`)
+        fetch(`https://job-portal-015.herokuapp.com/jobApply/${id}`)
             .then(res => res.json())
             .then(data => setJob(data))
     }, [id]);
@@ -22,7 +22,7 @@ const ApplyJob = () => {
         data.companyEmail = job.companyEmail;
         data.employeeEmail = job.email;
 
-        fetch('http://localhost:5000/addApplyJobPost', {
+        fetch('https://job-portal-015.herokuapp.com/addApplyJobPost', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

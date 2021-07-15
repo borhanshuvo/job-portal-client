@@ -13,7 +13,7 @@ const Booking = () => {
     const [show, setShow] = useState('block');
 
     useEffect(() => {
-        fetch(`http://localhost:5000/service/${id}`)
+        fetch(`https://job-portal-015.herokuapp.com/service/${id}`)
             .then(res => res.json())
             .then(data => setService(data))
     }, [id]);
@@ -36,7 +36,7 @@ const Booking = () => {
             orderTime: new Date()
         };
 
-        fetch('http://localhost:5000/addBooking', {
+        fetch('https://job-portal-015.herokuapp.com/addBooking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

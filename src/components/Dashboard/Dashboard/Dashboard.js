@@ -23,7 +23,7 @@ const Dashboard = () => {
     const [isBookedUser, setIsBookedUser] = useState('none');
 
     useEffect(() => {
-        fetch('http://localhost:5000/isUser?email=' + loggedInUser.email)
+        fetch('https://job-portal-015.herokuapp.com/isUser?email=' + loggedInUser.email)
             .then(res => res.json())
             .then(data => {
                 if (data[0].user_type === 'admin') {
@@ -39,7 +39,7 @@ const Dashboard = () => {
     }, [loggedInUser.email]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/isBookedUser?email=' + loggedInUser.email)
+        fetch('https://job-portal-015.herokuapp.com/isBookedUser?email=' + loggedInUser.email)
             .then(res => res.json())
             .then(data => {
                 if (data) {

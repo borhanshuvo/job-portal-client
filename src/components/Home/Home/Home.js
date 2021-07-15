@@ -16,7 +16,7 @@ const Home = () => {
     const history = useHistory();
 
     useEffect(() => {
-        fetch('http://localhost:5000/jobPostLists?status' + active)
+        fetch('https://job-portal-015.herokuapp.com/jobPostLists?status' + active)
             .then(res => res.json())
             .then(data => {
                 setAllJobPost(data);
@@ -24,7 +24,7 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:5000/searchJobPostLists?search=' + search)
+        fetch('https://job-portal-015.herokuapp.com/searchJobPostLists?search=' + search)
             .then(res => res.json())
             .then(data => {
                 setAllJobPost(data);
@@ -42,7 +42,8 @@ const Home = () => {
     }
 
     const handelSearch = (event) => {
-        setSearch(event.target.value);
+        const search = (event.target.value).toLowerCase();
+        setSearch(search);
     }
 
     return (
@@ -59,7 +60,7 @@ const Home = () => {
                                 <div className="col-md-12 pb-5" key={post._id}>
                                     <div className="card">
                                         <div className="card-body text-center">
-                                            <h4 className="card-title">{post.companyName}</h4>
+                                            <h4 className="card-title text-capitalize">{post.companyName}</h4>
                                             <p className="card-text">Company Email : {post.companyEmail}</p>
                                             <p className="card-text">Job Description : {post.description}</p>
                                             <p className="card-text">Vacancy : {post.vacancy}</p>

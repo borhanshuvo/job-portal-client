@@ -9,12 +9,14 @@ const AddJobPost = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     const onSubmit = (data, e) => {
+        
+        data.companyName = (data.companyName).toLowerCase();
         data.displayName = loggedInUser.displayName;
         data.email = loggedInUser.email;
         data.status = 'in-active'
         const loading = toast.loading('Please wait...!');
 
-        fetch('http://localhost:5000/addJobPost', {
+        fetch('https://job-portal-015.herokuapp.com/addJobPost', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -43,16 +45,6 @@ const AddJobPost = () => {
             <div className="card" style={{ width: '95%' }}>
                 <div className="card-body">
                     <form onSubmit={handleSubmit(onSubmit)}>
-
-                        <div className="form-group pb-3">
-                            <label htmlFor="displayName" className="pb-2">Name</label>
-                            <input type="text" name="displayName" defaultValue={loggedInUser.displayName} id="displayName" className="form-control" />
-                        </div>
-
-                        <div className="form-group pb-3">
-                            <label htmlFor="email" className="pb-2">Email</label>
-                            <input type="email" name="email" defaultValue={loggedInUser.email} id="email" className="form-control" />
-                        </div>
 
                         <div className="form-group pb-3">
                             <label htmlFor="companyName" className="pb-2">Company Name</label>
